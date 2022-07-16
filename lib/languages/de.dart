@@ -7,6 +7,7 @@ class De {
     'Abschaum',
     'After',
     'Arsch',
+    'Arschloch',
     'Fettarsch',
     'Oberarsch',
     'leck mich am Arsch',
