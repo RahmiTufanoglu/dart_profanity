@@ -19,7 +19,7 @@ class Language {
 class LanguageNotAvailableException implements Exception {
   LanguageNotAvailableException(this.message);
 
-  final String message;
+  final String? message;
 
   @override
   String toString() => 'Language code $message not available.';
