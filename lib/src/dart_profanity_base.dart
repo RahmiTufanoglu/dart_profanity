@@ -43,8 +43,9 @@ class DartProfanity {
         .asMap()
         .entries
         .map((e) {
+          final word = e.value.toLowerCase();
           final list = profanityList.where((element) {
-            return e.value.toLowerCase().contains(element);
+            return word.contains(element);
           }).toList()
             ..sort((a, b) => b.length.compareTo(a.length));
 
@@ -54,11 +55,22 @@ class DartProfanity {
           }
 
           if (longestProfanity != null) {
+            String? firstLetter;
+            if (censorType == CensorType.firstLetter) {
+              final index = word.lastIndexOf(longestProfanity);
+              firstLetter = e.value[index];
+            }
             final censored = CensorBleepType.censored(
               bleep: bleepType,
               length: longestProfanity.length - censorType.lengthDisplayed,
             );
-            return e.value.toLowerCase().replaceAll(longestProfanity, censored);
+            return e //
+                .value
+                .toLowerCase()
+                .replaceAll(
+                  longestProfanity,
+                  firstLetter != null ? firstLetter + censored : censored,
+                );
           }
 
           return e.value;
