@@ -1,6 +1,3 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library dart_profanity;
 
 export 'src/dart_profanity_base.dart';

@@ -2,8 +2,6 @@ class De {
   De._();
 
   static const list = [
-    'aas',
-    'aasgeier',
     'abschaum',
     'after',
     'arsch',

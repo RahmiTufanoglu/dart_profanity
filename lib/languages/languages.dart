@@ -22,5 +22,5 @@ class LanguageNotAvailableException implements Exception {
   final String? message;
 
   @override
-  String toString() => 'Language code $message not available.';
+  String toString() => 'Language code "$message" not available.';
 }
