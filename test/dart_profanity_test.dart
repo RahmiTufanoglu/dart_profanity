@@ -13,5 +13,27 @@ void main() {
       final result = dartProfanity.containsProfanity('Arschloch');
       expect(result, isTrue);
     });
+
+    test('Censore vulgar word', () {
+      final result = dartProfanity.censor(characters: 'Arschloch');
+      expect(result, 'A********');
+    });
+
+    test('Censor vulgar word with random characters', () {
+      final result = dartProfanity.censor(
+        characters: 'Arschloch',
+        bleep: CensorBleepType.asterix,
+      );
+      expect(result[0], 'A');
+      expect(result.substring(1, result.length), '********');
+    });
+
+    test('Censor vulgar word with random characters', () {
+      final result = dartProfanity.censor(
+        characters: 'Arschloch',
+        bleep: CensorBleepType.characters,
+      );
+      expect(result[0], 'A');
+    });
   });
 }
