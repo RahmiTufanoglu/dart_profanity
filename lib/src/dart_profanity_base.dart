@@ -3,6 +3,7 @@
 import 'package:dart_profanity/languages/de.dart';
 import 'package:dart_profanity/languages/en.dart';
 import 'package:dart_profanity/languages/languages.dart';
+import 'package:dart_profanity/languages/tr.dart';
 import 'package:dart_profanity/string_helper.dart';
 
 class DartProfanity {
@@ -22,7 +23,7 @@ class DartProfanity {
       case Language.de:
         return De.list;
       default:
-        return [...En.list, ...De.list];
+        return [...En.list, ...De.list, ...Tr.list];
     }
   }
 
