@@ -7,20 +7,31 @@ import 'package:dart_profanity/languages/tr.dart';
 import 'package:dart_profanity/string_helper.dart';
 
 class DartProfanity {
-  DartProfanity({
-    this.languageCode,
-    this.languageCodes,
-  }) {
-    if (languageCode == null) return;
-    if (!Language.codes.contains(languageCode)) {
-      throw LanguageNotAvailableException(languageCode!);
-    }
+  DartProfanity({this.languageCodes = const ['en']}) {
+    final availableLanguages = languageCodes.where((element) {
+      return Language.codes.contains(element);
+    }).toList();
+
+    _profanityList = availableLanguages //
+        .map((element) => profanityList(element))
+        .expand((element) => element)
+        .toList();
+
+    //if (availableLanguages.isEmpty) {
+    //  throw LanguageNotAvailableException('ALL');
+    //}
+
+    //if (languageCode == null) return;
+    //if (!Language.codes.contains(languageCode)) {
+    //  throw LanguageNotAvailableException(languageCode!);
+    //}
   }
 
-  final String? languageCode;
-  final List<String>? languageCodes;
+  final List<String> languageCodes;
 
-  List<String> get profanityList {
+  var _profanityList = [...En.list];
+
+  List<String> profanityList(String languageCode) {
     switch (languageCode) {
       case Language.en:
         return En.list;
@@ -32,7 +43,8 @@ class DartProfanity {
   }
 
   bool containsProfanity(String word) {
-    return profanityList //
+    //return languageCodes //
+    return _profanityList //
         .where((element) => word.toLowerCase().contains(element))
         .toList()
         .isNotEmpty;
@@ -49,7 +61,8 @@ class DartProfanity {
         .entries
         .map((e) {
           final word = e.value.toLowerCase();
-          final list = profanityList.where((element) {
+          final list = _profanityList.where((element) {
+            //final list = languageCodes.where((element) {
             return word.contains(element);
           }).toList()
             ..sort((a, b) => b.length.compareTo(a.length));

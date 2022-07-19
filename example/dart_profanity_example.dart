@@ -1,7 +1,10 @@
 import 'package:dart_profanity/dart_profanity.dart';
 
 void main() {
-  final dartProfanity = DartProfanity(languageCode: 'de');
+  final dartProfanity = DartProfanity(languageCodes: ['de', 'en', 'gg']);
+  final censored0 = dartProfanity.censor('Du bist ein mega Arschloch & DuWichser.');
+  print('censored0: $censored0');
+
   final censored1 = dartProfanity.censor('Du bist ein mega Arschloch & DuWichser.');
   print('censored1: $censored1');
 

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('de language tests', () {
     final dartProfanity = DartProfanity();
-    final dartProfanityDe = DartProfanity(languageCode: 'de');
+    final dartProfanityDe = DartProfanity(languageCodes: ['de']);
 
     setUp(() {
       // Additional setup goes here.
