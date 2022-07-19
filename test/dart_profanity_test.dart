@@ -27,13 +27,13 @@ void main() {
     });
 
     test('Censore vulgar word de', () {
-      final result = dartProfanityDe.censor(characters: 'Arschloch');
+      final result = dartProfanityDe.censor('Arschloch');
       expect(result, '*********');
     });
 
     test('Censor vulgar word with asterix', () {
       final result = dartProfanity.censor(
-        characters: 'dU bist ein badAsS!',
+        'dU bist ein badAsS!',
         bleepType: CensorBleepType.asterix,
       );
       expect(result, 'dU bist ein bad***!');
@@ -41,7 +41,7 @@ void main() {
 
     test('Censor vulgar word with random characters de', () {
       final result = dartProfanityDe.censor(
-        characters: 'Arschloch',
+        'Arschloch',
         bleepType: CensorBleepType.asterix,
       );
       expect(result.substring(1, result.length), '********');
@@ -49,7 +49,7 @@ void main() {
 
     test('Censor vulgar word with random characters de', () {
       final result = dartProfanityDe.censor(
-        characters: 'Arschloch',
+        'Arschloch',
         bleepType: CensorBleepType.characters,
       );
       expect(result, isNot('*********'));

@@ -2,21 +2,21 @@ import 'package:dart_profanity/dart_profanity.dart';
 
 void main() {
   final dartProfanity = DartProfanity(languageCode: 'de');
-  final censored1 = dartProfanity.censor(characters: 'Du bist ein mega Arschloch & DuWichser.');
+  final censored1 = dartProfanity.censor('Du bist ein mega Arschloch & DuWichser.');
   print('censored1: $censored1');
 
   final dartProfanity2 = DartProfanity();
-  final censored2 = dartProfanity2.censor(characters: 'Du bist ein mega arschloch & DuAsS!');
+  final censored2 = dartProfanity2.censor('Du bist ein mega arschloch & DuAsS!');
   print('censored2: $censored2');
 
   final censored3 = dartProfanity2.censor(
-    characters: 'Du bist ein mega arschloch & DuAsS!',
+    'Du bist ein mega arschloch & DuAsS!',
     censorType: CensorType.firstLetter,
   );
   print('censored3: $censored3');
 
   final censored4 = dartProfanity2.censor(
-    characters: 'dU bist ein badAsS!',
+    'dU bist ein badAsS!',
     censorType: CensorType.firstLetter,
   );
   print('censored4: $censored4');

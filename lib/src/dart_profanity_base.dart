@@ -7,7 +7,10 @@ import 'package:dart_profanity/languages/tr.dart';
 import 'package:dart_profanity/string_helper.dart';
 
 class DartProfanity {
-  DartProfanity({this.languageCode}) {
+  DartProfanity({
+    this.languageCode,
+    this.languageCodes,
+  }) {
     if (languageCode == null) return;
     if (!Language.codes.contains(languageCode)) {
       throw LanguageNotAvailableException(languageCode!);
@@ -15,6 +18,7 @@ class DartProfanity {
   }
 
   final String? languageCode;
+  final List<String>? languageCodes;
 
   List<String> get profanityList {
     switch (languageCode) {
@@ -34,8 +38,8 @@ class DartProfanity {
         .isNotEmpty;
   }
 
-  String censor({
-    required String characters,
+  String censor(
+    String characters, {
     CensorBleepType bleepType = CensorBleepType.asterix,
     CensorType censorType = CensorType.full,
   }) {
