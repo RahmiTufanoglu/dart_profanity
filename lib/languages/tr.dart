@@ -3,5 +3,6 @@ class Tr {
 
   static const list = [
     'göt',
+    'amcik',
   ];
 }

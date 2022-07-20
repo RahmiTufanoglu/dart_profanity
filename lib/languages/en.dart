@@ -3,5 +3,6 @@ class En {
 
   static const list = [
     'ass',
+    'asshole',
   ];
 }
