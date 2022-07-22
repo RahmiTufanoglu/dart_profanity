@@ -2,8 +2,6 @@ class En {
   En._();
 
   static const list = [
-    'ass',
-    'asshole',
     "2g1c",
     "2 girls 1 cup",
     "acrotomophilia",
