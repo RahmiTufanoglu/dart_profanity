@@ -1,4 +1,4 @@
-import 'package:dart_profanity/string_helper.dart';
+import 'package:dart_profanity/utils/string_helper.dart';
 
 enum CensorBleepType {
   asterix,
@@ -15,4 +15,7 @@ enum CensorBleepType {
     }
     return '*' * length;
   }
+
+  @override
+  String toString() => '$CensorBleepType';
 }
