@@ -1,14 +1,11 @@
+import 'package:dart_profanity/src/censor_bleep_type.dart';
 import 'package:dart_profanity/src/dart_profanity_base.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('de language tests', () {
-    final dartProfanity = DartProfanity();
-    final dartProfanityDe = DartProfanity(languageCodes: ['de']);
-
-    setUp(() {
-      // Additional setup goes here.
-    });
+    final dartProfanity = Profanity();
+    final dartProfanityDe = Profanity(languages: ['de']);
 
     test('Contains vulgar word', () {
       final result1 = dartProfanity.containsProfanity('DU bist ein AsS!');
@@ -53,6 +50,14 @@ void main() {
         bleepType: CensorBleepType.characters,
       );
       expect(result, isNot('*********'));
+    });
+
+    test('Censor vulgar word with random characters de', () {
+      final result = dartProfanityDe.censor(
+        'ichficke dich du ficker fick ick.fickdichik',
+        bleepType: CensorBleepType.asterix,
+      );
+      expect(result, 'ich***** dich du ****** **** ick.****dichik');
     });
   });
 }
