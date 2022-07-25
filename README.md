@@ -1,35 +1,36 @@
 <!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
+A Profanity filter written in Dart.
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package censores swear words from your text and delivers some censor options for your needs.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Censors swear words for the languages english, german and turkish (more incoming)
+- You can enable the first letter and censor the rest (more options incoming)
+- Simple Api with no overhead
+- Active maintained package
+- No Third-Party dependencies
+- Open for everyone
+- Contributions are welcome :)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Enter in the console:
+```
+pub get dart_profanity
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+final profanity = Profanity();
+final censored1 = profanity.censor('You asshole! You pUssy!');
+print('censored1: $censored1');
+
+final profanity = Profanity(languages: ['de']);
+final censored2 = profanity.censor('Du bist ein mega Arschloch & DuWichser.');
+print('censored2: $censored2');
 ```
 
 ## Additional information
