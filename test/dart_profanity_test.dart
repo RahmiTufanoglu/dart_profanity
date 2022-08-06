@@ -7,28 +7,26 @@ void main() {
     final dartProfanity = Profanity();
     final dartProfanityDe = Profanity(languages: ['de']);
 
-    test('Contains vulgar word', () {
-      final result1 = dartProfanity.containsProfanity('DU bist ein AsS!');
-      expect(result1, isTrue);
-    });
-
-    test('Contains vulgar word de', () {
-      final result1 = dartProfanityDe.containsProfanity('Arschloch');
+    test('Contains profanity', () {
+      final result1 = dartProfanity.containsProfanity('DU bist ein ARsCh!');
       expect(result1, isTrue);
 
-      final result2 = dartProfanityDe.containsProfanity('DuWichser.');
+      final result2 = dartProfanityDe.containsProfanity('Arschloch');
       expect(result2, isTrue);
 
-      final result3 = dartProfanityDe.containsProfanity('Du bist ein mega Arschloch & DuWichser.');
+      final result3 = dartProfanityDe.containsProfanity('DuWichser.');
       expect(result3, isTrue);
+
+      final result4 = dartProfanityDe.containsProfanity('Du bist ein mega Arschloch & DuWichser.');
+      expect(result4, isTrue);
     });
 
-    test('Censore vulgar word de', () {
+    test('Censors profanity in word', () {
       final result = dartProfanityDe.censor('Arschloch');
       expect(result, '*********');
     });
 
-    test('Censor vulgar word with asterix', () {
+    test('Censors profanity in word with asterix', () {
       final result = dartProfanity.censor(
         'dU bist ein badAsS!',
         bleepType: CensorBleepType.asterix,
@@ -36,7 +34,7 @@ void main() {
       expect(result, 'dU bist ein bad***!');
     });
 
-    test('Censor vulgar word with random characters de', () {
+    test('Censor profanity in word with random characters', () {
       final result = dartProfanityDe.censor(
         'Arschloch',
         bleepType: CensorBleepType.asterix,
@@ -44,20 +42,18 @@ void main() {
       expect(result.substring(1, result.length), '********');
     });
 
-    test('Censor vulgar word with random characters de', () {
-      final result = dartProfanityDe.censor(
+    test('Censor profanity in word with random characters', () {
+      final result1 = dartProfanityDe.censor(
         'Arschloch',
         bleepType: CensorBleepType.characters,
       );
-      expect(result, isNot('*********'));
-    });
+      expect(result1, isNot('*********'));
 
-    test('Censor vulgar word with random characters de', () {
-      final result = dartProfanityDe.censor(
+      final result2 = dartProfanityDe.censor(
         'ichficke dich du ficker fick ick.fickdichik',
         bleepType: CensorBleepType.asterix,
       );
-      expect(result, 'ich***** dich du ****** **** ick.****dichik');
+      expect(result2, 'ich***** dich du ****** **** ick.****dichik');
     });
   });
 }
