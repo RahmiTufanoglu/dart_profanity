@@ -17,10 +17,10 @@ class Profanity {
 
   final List<String> languages;
 
-  /// The nglish ('En') swear word list is always the default.
+  /// The english ('En') profanity word list is always the default.
   /// You can disable it by using the languages property like:
   /// final profanity = Profanity(languages: ['de']);
-  /// This will only use the german ['de'] swear words list.
+  /// This will only use the german ['de'] profanity words list.
   var _profanityList = [...En.list];
 
   /// Sets the profanity list by the language code.
@@ -35,7 +35,7 @@ class Profanity {
     }
   }
 
-  /// Checks if string contains a swear word.
+  /// Checks if string contains a profanity in word.
   bool containsProfanity(String word) {
     return _profanityList //
         .where((element) => word.toLowerCase().contains(element))
@@ -43,7 +43,7 @@ class Profanity {
         .isNotEmpty;
   }
 
-  /// Censors the swear words from a string sequence.
+  /// Censors the profanity from a string sequence.
   String censor(
     String characters, {
     CensorBleepType bleepType = CensorBleepType.asterix,
