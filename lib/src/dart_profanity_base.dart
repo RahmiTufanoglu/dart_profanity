@@ -68,8 +68,8 @@ class Profanity {
           String? censoredWord;
           String? savedCensoredWord;
 
-          for (var i = 0; i < currentProfanityList.length; i++) {
-            final profanity = currentProfanityList[i];
+          for (var currentProfanity in currentProfanityList) {
+            final profanity = currentProfanity;
             if (savedCensoredWord == null) {
               censoredWord = CensorBleepType.censored(
                 word: word,
