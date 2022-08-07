@@ -55,42 +55,40 @@ class Profanity {
         .entries
         .map((e) {
           final word = e.value.toLowerCase();
-          final list = _profanityList.where((element) {
-            return word.contains(element);
+
+          final currentProfanityList = _profanityList.where((profanity) {
+            return word.contains(profanity);
           }).toList()
-            ..sort((a, b) => b.length.compareTo(a.length));
+            ..sort((profanity1, profanity2) {
+              return profanity2.length.compareTo(profanity1.length);
+            });
 
-          String? longestProfanity;
+          if (currentProfanityList.isEmpty) return e.value;
 
-          if (list.isNotEmpty) {
-            longestProfanity = list.first;
-          }
+          String? censoredWord;
+          String? savedCensoredWord;
 
-          if (longestProfanity != null) {
-            String? firstLetter;
-
-            /// Does not censor first letter.
-            if (censorType == CensorType.firstLetter) {
-              final index = word.lastIndexOf(longestProfanity);
-              firstLetter = e.value[index];
+          for (var i = 0; i < currentProfanityList.length; i++) {
+            final profanity = currentProfanityList[i];
+            if (savedCensoredWord == null) {
+              censoredWord = CensorBleepType.censored(
+                word: word,
+                profanity: profanity,
+                bleep: bleepType,
+                censorType: censorType,
+              );
+              savedCensoredWord = censoredWord;
+            } else {
+              savedCensoredWord = CensorBleepType.censored(
+                profanity: profanity,
+                word: savedCensoredWord,
+                bleep: bleepType,
+                censorType: censorType,
+              );
             }
-
-            /// Creates an [CensorBleepType].
-            final censored = CensorBleepType.censored(
-              bleep: bleepType,
-              length: longestProfanity.length - censorType.lengthDisplayed,
-            );
-
-            return e //
-                .value
-                .toLowerCase()
-                .replaceAll(
-                  longestProfanity,
-                  firstLetter != null ? firstLetter + censored : censored,
-                );
           }
 
-          return e.value;
+          return savedCensoredWord ?? censoredWord;
         })
         .toList()
         .join(' ');
