@@ -9,8 +9,6 @@ enum CensorType {
 
   final int notCensoredLength;
 
-  int get lengthDisplayed => notCensoredLength;
-
   @override
   String toString() => '$CensorType';
 }
