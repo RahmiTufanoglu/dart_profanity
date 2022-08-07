@@ -154,6 +154,7 @@ class En {
     'footjob',
     'frotting',
     'fuck',
+    'fucker',
     'fuck buttons',
     'fuckin',
     'fucking',
