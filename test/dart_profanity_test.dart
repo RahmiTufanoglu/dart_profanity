@@ -8,7 +8,7 @@ void main() {
     final dartProfanityDe = Profanity(languages: ['de']);
 
     test('Contains profanity', () {
-      final result1 = dartProfanity.containsProfanity('DU bist ein ARsCh!');
+      final result1 = dartProfanityDe.containsProfanity('DU bist ein Arsch!');
       expect(result1, isTrue);
 
       final result2 = dartProfanityDe.containsProfanity('Arschloch');
@@ -50,10 +50,43 @@ void main() {
       expect(result1, isNot('*********'));
 
       final result2 = dartProfanityDe.censor(
-        'ichficke dich du ficker fick ick.fickdichik',
+        'ichficke dICh du ficker fick ick.fickdichik',
         bleepType: CensorBleepType.asterix,
       );
-      expect(result2, 'ich***** dich du ****** **** ick.****dichik');
+      expect(result2, 'ich***** dICh du ****** **** ick.****dichik');
+    });
+  });
+
+  group('en language tests', () {
+    final dartProfanity = Profanity();
+    final dartProfanityEn = Profanity(languages: ['en']);
+
+    test('Contains profanity', () {
+      final result1 = dartProfanity.containsProfanity('You are an asshole!');
+      expect(result1, isTrue);
+
+      final result2 = dartProfanityEn.containsProfanity('Asshole');
+      expect(result2, isTrue);
+
+      final result3 = dartProfanityEn.containsProfanity('aSshOle.');
+      expect(result3, isTrue);
+
+      final result4 = dartProfanityEn.containsProfanity('YoU aRe aN aSShole & FuCKer.');
+      expect(result4, isTrue);
+    });
+
+    test('Censor profanity in word with random characters', () {
+      final result1 = dartProfanityEn.censor(
+        'Asshole',
+        bleepType: CensorBleepType.characters,
+      );
+      expect(result1, isNot('*********'));
+
+      final result2 = dartProfanityEn.censor(
+        'FuckYou fuckerAsshole and pUSSy!',
+        bleepType: CensorBleepType.asterix,
+      );
+      expect(result2, '****you ************* and *****!');
     });
   });
 }
