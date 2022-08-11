@@ -29,11 +29,11 @@ final profanity = Profanity(languages: ['en']); // Shorter Profanity(), as en is
 final isProfanity = profanity.containsProfanity('YoU aRe aN aSShole & FuCKer.');
 print(isProfanity); // Outputs: true
 
-final censoredWithAsterix = profanity.censor(
+final censoredWithAsterisks = profanity.censor(
   'Asshole',
-  bleepType: CensorBleepType.asterix,
+  bleepType: CensorBleepType.asterisks,
 );
-print(censoredWithAsterix); // Outputs: *******
+print(censoredWithAsterisks); // Outputs: *******
 ```
 
 ## Additional information

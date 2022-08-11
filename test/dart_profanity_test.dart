@@ -26,10 +26,10 @@ void main() {
       expect(result, '*********');
     });
 
-    test('Censors profanity in word with asterix', () {
+    test('Censors profanity in word with asterisks', () {
       final result = dartProfanity.censor(
         'dU bist ein badAsS!',
-        bleepType: CensorBleepType.asterix,
+        bleepType: CensorBleepType.asterisks,
       );
       expect(result, 'dU bist ein bad***!');
     });
@@ -37,7 +37,7 @@ void main() {
     test('Censor profanity in word with random characters', () {
       final result = dartProfanityDe.censor(
         'Arschloch',
-        bleepType: CensorBleepType.asterix,
+        bleepType: CensorBleepType.asterisks,
       );
       expect(result.substring(1, result.length), '********');
     });
@@ -51,7 +51,7 @@ void main() {
 
       final result2 = dartProfanityDe.censor(
         'ichficke dICh du ficker fick ick.fickdichik',
-        bleepType: CensorBleepType.asterix,
+        bleepType: CensorBleepType.asterisks,
       );
       expect(result2, 'ich***** dICh du ****** **** ick.****dichik');
     });
@@ -84,7 +84,7 @@ void main() {
 
       final result2 = dartProfanityEn.censor(
         'FuckYou fuckerAsshole and pUSSy!',
-        bleepType: CensorBleepType.asterix,
+        bleepType: CensorBleepType.asterisks,
       );
       expect(result2, '****you ************* and *****!');
     });
