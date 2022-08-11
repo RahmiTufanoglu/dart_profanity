@@ -45,7 +45,7 @@ void main() {
     test('Censor profanity in word with random characters', () {
       final result1 = dartProfanityDe.censor(
         'Arschloch',
-        bleepType: CensorBleepType.characters,
+        bleepType: CensorBleepType.random,
       );
       expect(result1, isNot('*********'));
 
@@ -78,7 +78,7 @@ void main() {
     test('Censor profanity in word with random characters', () {
       final result1 = dartProfanityEn.censor(
         'Asshole',
-        bleepType: CensorBleepType.characters,
+        bleepType: CensorBleepType.random,
       );
       expect(result1, isNot('*********'));
 
