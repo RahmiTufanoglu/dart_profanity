@@ -4,7 +4,7 @@ void main() {
   final profanity = Profanity();
   final result = profanity.censor(
     'FuckYou assfuckerAsshole and pUSSy!',
-    bleepType: CensorBleepType.asterisks,
+    bleepType: CensorBleepType.asterisk,
     censorType: CensorType.firstLetter,
   );
   print('result: $result');

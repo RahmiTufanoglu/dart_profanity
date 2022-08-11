@@ -46,7 +46,7 @@ class Profanity {
   /// Censors the profanity from a string sequence.
   String censor(
     String characters, {
-    CensorBleepType bleepType = CensorBleepType.asterisks,
+    CensorBleepType bleepType = CensorBleepType.asterisk,
     CensorType censorType = CensorType.full,
   }) {
     return characters

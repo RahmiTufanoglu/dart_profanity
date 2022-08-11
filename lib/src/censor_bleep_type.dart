@@ -2,10 +2,10 @@ import 'package:dart_profanity/dart_profanity.dart';
 import 'package:dart_profanity/utils/string_helper.dart';
 
 /// Creates an [CensorBleepType].
-/// CensorBleepType asterisks censors the whole String with asterisks symbols.
+/// CensorBleepType asterisk censors the whole String with asterisk symbols.
 /// CensorBleepType characters censor the whole String with random characters.
 enum CensorBleepType {
-  asterisks(CensorType.firstLetter),
+  asterisk(CensorType.firstLetter),
   characters(CensorType.firstLetter);
 
   const CensorBleepType(this.censorType);
@@ -26,7 +26,7 @@ enum CensorBleepType {
       //censoredWord = firstLetterNotCensored + bleep.toString() * profanityLength;
       censoredWord = firstLetterNotCensored + bleep.toString() * censoredProfanityLength;
     } else if (bleep is CensorBleepType) {
-      if (bleep == CensorBleepType.asterisks) {
+      if (bleep == CensorBleepType.asterisk) {
         censoredWord = firstLetterNotCensored + '*' * censoredProfanityLength;
       } else if (bleep == CensorBleepType.characters) {
         censoredWord = firstLetterNotCensored + StringHelper.getRandomCharacters(censoredProfanityLength);
