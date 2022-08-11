@@ -1,5 +1,6 @@
 <!-- 
 A Profanity filter written in Dart.
+⚠️️ Still in progress and not ready to use. ⚠️️
 -->
 
 This package censores profanity in String sequences and delivers some censor options for your needs.
