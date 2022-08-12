@@ -80,28 +80,6 @@ class Profanity {
           }
 
           return savedCensoredWord ?? censoredWord;
-
-          //for (var currentProfanity in currentProfanityList) {
-          //  final profanity = currentProfanity;
-          //  if (savedCensoredWord == null) {
-          //    censoredWord = CensorBleepType.censored(
-          //      word: word,
-          //      profanity: profanity,
-          //      bleep: bleepType,
-          //      censorType: censorType,
-          //    );
-          //    savedCensoredWord = censoredWord;
-          //  } else {
-          //    savedCensoredWord = CensorBleepType.censored(
-          //      word: savedCensoredWord,
-          //      profanity: profanity,
-          //      bleep: bleepType,
-          //      censorType: censorType,
-          //    );
-          //  }
-          //}
-
-          //return savedCensoredWord ?? censoredWord;
         })
         .toList()
         .join(' ');
