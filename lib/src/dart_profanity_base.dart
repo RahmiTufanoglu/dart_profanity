@@ -80,8 +80,8 @@ class Profanity {
               savedCensoredWord = censoredWord;
             } else {
               savedCensoredWord = CensorBleepType.censored(
-                profanity: profanity,
                 word: savedCensoredWord,
+                profanity: profanity,
                 bleep: bleepType,
                 censorType: censorType,
               );
