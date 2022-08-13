@@ -54,32 +54,45 @@ class Profanity {
         .asMap()
         .entries
         .map((e) {
-          final word = e.value.toLowerCase();
+          final word = e.value;
+          final lowerCaseWord = word.toLowerCase();
 
           final currentProfanityList = _profanityList.where((profanity) {
-            return word.contains(profanity);
+            return lowerCaseWord.contains(profanity);
           }).toList()
             ..sort((profanity1, profanity2) {
               return profanity2.length.compareTo(profanity1.length);
             });
 
-          if (currentProfanityList.isEmpty) return e.value;
+          if (currentProfanityList.isEmpty) return word;
 
           String? censoredWord;
-          String? savedCensoredWord;
 
           for (var currentProfanity in currentProfanityList) {
-            final profanity = currentProfanity;
-
-            savedCensoredWord = CensorBleepType.censored(
-              word: savedCensoredWord ?? word,
-              profanity: profanity,
+            censoredWord = CensorBleepType.censored(
+              word: censoredWord ?? lowerCaseWord,
+              profanity: currentProfanity,
               bleep: bleepType,
               censorType: censorType,
             );
           }
 
-          return savedCensoredWord ?? censoredWord;
+          var upperCaseIndexes = <int>[];
+          final splittedWord = word.split('');
+          for (var i = 0; i < splittedWord.length; i++) {
+            if (splittedWord[i].toUpperCase() == splittedWord[i]) {
+              upperCaseIndexes.add(i);
+            }
+          }
+
+          final splittedCensoredWord = censoredWord!.split('');
+          for (var i = 0; i < splittedCensoredWord.length; i++) {
+            if (upperCaseIndexes.contains(i)) {
+              splittedCensoredWord[i] = splittedCensoredWord[i].toUpperCase();
+            }
+          }
+
+          return splittedCensoredWord.join();
         })
         .toList()
         .join(' ');

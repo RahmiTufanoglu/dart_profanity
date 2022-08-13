@@ -86,7 +86,27 @@ void main() {
         'FuckYou fuckerAsshole and pUSSy!',
         bleepType: CensorBleepType.asterisk,
       );
-      expect(result2, '****you ************* and *****!');
+      expect(result2, '****You ************* and *****!');
+    });
+
+    test('Censor profanity in long texts.', () {
+      final text = '''Hello there, how are YOUfucker?'''
+          '''Lorem Ipsum assHOLEdude.''';
+      /*'''!!! Click this NOW!!! -> https://porn.to'''
+          '''fuck, you'''
+          '''fUcK uuu'''
+          '''you dirty scum''';*/
+
+      final result = dartProfanityEn.censor(text);
+
+      final expectation = '''Hello there, how are YOU******?'''
+          '''Lorem Ipsum *******dude.''';
+      //'''!!! Click this NOW!!! -> https://****.to'''
+      //'''****, you'''
+      //'''**** uuu'''
+      //'''you dirty s***''';
+
+      expect(result, expectation);
     });
   });
 }
