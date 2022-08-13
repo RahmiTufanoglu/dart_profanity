@@ -1,9 +1,12 @@
 <!-- 
-A Profanity filter written in Dart.
+A profanity filter written in Dart.
 ⚠️️ Still in progress and not ready to use. ⚠️️
 -->
 
 This package censores profanity in String sequences and delivers some censor options for your needs.
+
+## Experimental 🚧
+Dart Profanity is an experimental project under development and should not be used in production at this time.
 
 ## Features
 
