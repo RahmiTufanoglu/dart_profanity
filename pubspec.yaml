@@ -1,7 +1,7 @@
 name: dart_profanity
 description: This package censores profanity in String sequences and delivers some censor options for your needs.
 version: 1.0.0
-homepage: https://rahmi-tufanoglu-homepage-next.vercel.app/
+homepage: https://github.com/RahmiTufanoglu/dart_profanity
 
 environment:
   sdk: '>=2.17.3 <3.0.0'
