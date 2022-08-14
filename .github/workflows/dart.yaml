@@ -1,0 +1,39 @@
+name: CI
+
+# Controls when the workflow will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch.
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/README.md'
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  build:
+    # This job will run on ubuntu virtual machine.
+    name: dart build
+    runs-on: ubuntu-18.04
+    timeout-minutes: 10
+
+    container:
+      image: google/dart:latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: dart pub get
+      - name: format code
+        run: dart format .
+      - name: statically analyze the code for any errors
+        run: dart analyze --fatal-infos --fatal-warnings
+      - name: running tests
+        #run: dart test --coverage="coverage"
+        run: dart pub global run coverage:test_with_coverage
+      - name: check test coverage
+        #run: dart run coverage:format_coverage -l -c -i .coverage --report-on=lib --packages=.packages | dart run check_coverage:check_coverage 90
+        run: dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --lcov -i coverage/coverage.json -o coverage/lcov.info
