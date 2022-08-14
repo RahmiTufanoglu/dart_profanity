@@ -17,7 +17,8 @@ void main() {
       final result3 = dartProfanityDe.containsProfanity('DuWichser.');
       expect(result3, isTrue);
 
-      final result4 = dartProfanityDe.containsProfanity('Du bist ein mega Arschloch & DuWichser.');
+      final result4 = dartProfanityDe
+          .containsProfanity('Du bist ein mega Arschloch & DuWichser.');
       expect(result4, isTrue);
     });
 
@@ -71,7 +72,8 @@ void main() {
       final result3 = dartProfanityEn.containsProfanity('aSshOle.');
       expect(result3, isTrue);
 
-      final result4 = dartProfanityEn.containsProfanity('YoU aRe aN aSShole & FuCKer.');
+      final result4 =
+          dartProfanityEn.containsProfanity('YoU aRe aN aSShole & FuCKer.');
       expect(result4, isTrue);
     });
 
