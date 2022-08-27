@@ -95,7 +95,7 @@ class Tr {
     'Pavyon karısı',
     'Pavyona mı düşecen',
     'Pısırık',
-    'Piç',
+    'pic',
     'Piçlerinizle dönüp gelesiniz',
     'Psikopat',
     'Puşt',
@@ -135,5 +135,7 @@ class Tr {
     'Yüzünü keserim',
     'göt',
     'amcik',
+    'amk',
+    'amina',
   ];
 }
