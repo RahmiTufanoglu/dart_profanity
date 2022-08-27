@@ -10,3 +10,11 @@ class StringHelper {
     return String.fromCharCodes(values);
   }
 }
+
+extension StringExt on String {
+  String get normalize {
+    return replaceAll('ı', 'i') //
+        .replaceAll('ș', 's')
+        .replaceAll('ç', 'c');
+  }
+}
