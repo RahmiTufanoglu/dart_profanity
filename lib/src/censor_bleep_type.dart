@@ -19,20 +19,18 @@ enum CensorBleepType {
     required CensorType censorType,
   }) {
     late final String censoredWord;
+
     final profanityLength = profanity.length;
-    final firstLetterNotCensored =
-        censorType.notCensoredLength == 1 ? profanity[0] : '';
-    final censoredProfanityLength =
-        profanityLength - (censorType.notCensoredLength == 1 ? 1 : 0);
+    final firstLetterNotCensored = censorType.notCensoredLength == 1 ? profanity[0] : '';
+    final censoredProfanityLength = profanityLength - (censorType.notCensoredLength == 1 ? 1 : 0);
+
     if (bleep is String) {
-      censoredWord =
-          firstLetterNotCensored + bleep.toString() * censoredProfanityLength;
+      censoredWord = firstLetterNotCensored + bleep.toString() * censoredProfanityLength;
     } else if (bleep is CensorBleepType) {
       if (bleep == CensorBleepType.asterisk) {
         censoredWord = firstLetterNotCensored + '*' * censoredProfanityLength;
       } else if (bleep == CensorBleepType.random) {
-        censoredWord = firstLetterNotCensored +
-            StringHelper.getRandomCharacters(censoredProfanityLength);
+        censoredWord = firstLetterNotCensored + StringHelper.getRandomCharacters(censoredProfanityLength);
       }
     } else {
       censoredWord = firstLetterNotCensored + '*' * censoredProfanityLength;

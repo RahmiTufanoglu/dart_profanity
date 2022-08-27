@@ -1,5 +1,6 @@
 import 'package:dart_profanity/dart_profanity.dart';
 import 'package:dart_profanity/languages/index.dart';
+import 'package:dart_profanity/utils/string_helper.dart';
 
 /// Creates an [Profanity].
 class Profanity {
@@ -21,7 +22,7 @@ class Profanity {
   /// You can disable it by using the languages property like:
   /// final profanity = Profanity(languages: ['de']);
   /// This will only use the german ['de'] profanity words list.
-  var _profanityList = [...En.list];
+  List<String> _profanityList = [...En.list];
 
   /// Sets the profanity list by the language code.
   List<String> profanityList(String languageCode) {
@@ -54,15 +55,14 @@ class Profanity {
         .asMap()
         .entries
         .map((e) {
-          final word = e.value;
-          final lowerCaseWord = word.toLowerCase();
+          var word = e.value;
+
+          final lowerCaseWord = word.toLowerCase().normalize;
 
           final currentProfanityList = _profanityList.where((profanity) {
             return lowerCaseWord.contains(profanity);
           }).toList()
-            ..sort((profanity1, profanity2) {
-              return profanity2.length.compareTo(profanity1.length);
-            });
+            ..sort((profanity1, profanity2) => profanity2.length.compareTo(profanity1.length));
 
           if (currentProfanityList.isEmpty) return word;
 
@@ -77,7 +77,7 @@ class Profanity {
             );
           }
 
-          var upperCaseIndexes = <int>[];
+          final upperCaseIndexes = <int>[];
           final splittedWord = word.split('');
           for (var i = 0; i < splittedWord.length; i++) {
             if (splittedWord[i].toUpperCase() == splittedWord[i]) {
