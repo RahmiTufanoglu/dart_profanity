@@ -1,8 +1,52 @@
-import 'package:dart_profanity/src/censor_bleep_type.dart';
-import 'package:dart_profanity/src/dart_profanity_base.dart';
+import 'package:dart_profanity/dart_profanity.dart';
 import 'package:test/test.dart';
 
 void main() {
+  group('en language tests', () {
+    final dartProfanity = Profanity();
+    final dartProfanityEn = Profanity(languages: ['en']);
+
+    test('Contains profanity', () {
+      final result1 = dartProfanity.containsProfanity('You are an asshole!');
+      expect(result1, isTrue);
+
+      final result2 = dartProfanityEn.containsProfanity('Asshole');
+      expect(result2, isTrue);
+
+      final result3 = dartProfanityEn.containsProfanity('aSshOle.');
+      expect(result3, isTrue);
+
+      final result4 = dartProfanityEn.containsProfanity('YoU aRe aN aSShole & FuCKer.');
+      expect(result4, isTrue);
+    });
+
+    test('Censor profanity in word with random characters', () {
+      final result1 = dartProfanityEn.censor(
+        'Asshole',
+        bleepType: CensorBleepType.random,
+      );
+      expect(result1, isNot('*********'));
+
+      final result2 = dartProfanityEn.censor(
+        'FuckYou fuckerAsshole and pUSSy!',
+        bleepType: CensorBleepType.asterisk,
+      );
+      expect(result2, '****You ************* and *****!');
+    });
+
+    test('Censor profanity in long texts.', () {
+      final text = '''Hello there, how are YOUfucker?'''
+          '''Lorem Ipsum assHOLEdude.''';
+
+      final result = dartProfanityEn.censor(text);
+
+      final expectation = '''Hello there, how are YOU******?'''
+          '''Lorem Ipsum *******dude.''';
+
+      expect(result, expectation);
+    });
+  });
+
   group('de language tests', () {
     final dartProfanity = Profanity();
     final dartProfanityDe = Profanity(languages: ['de']);
@@ -17,8 +61,7 @@ void main() {
       final result3 = dartProfanityDe.containsProfanity('DuWichser.');
       expect(result3, isTrue);
 
-      final result4 = dartProfanityDe
-          .containsProfanity('Du bist ein mega Arschloch & DuWichser.');
+      final result4 = dartProfanityDe.containsProfanity('Du bist ein mega Arschloch & DuWichser.');
       expect(result4, isTrue);
     });
 
@@ -58,57 +101,29 @@ void main() {
     });
   });
 
-  group('en language tests', () {
-    final dartProfanity = Profanity();
-    final dartProfanityEn = Profanity(languages: ['en']);
+  group('tr language tests', () {
+    final dartProfanityTr = Profanity(languages: ['tr']);
 
     test('Contains profanity', () {
-      final result1 = dartProfanity.containsProfanity('You are an asshole!');
+      final result1 = dartProfanityTr.containsProfanity('amk senin!!!');
       expect(result1, isTrue);
-
-      final result2 = dartProfanityEn.containsProfanity('Asshole');
-      expect(result2, isTrue);
-
-      final result3 = dartProfanityEn.containsProfanity('aSshOle.');
-      expect(result3, isTrue);
-
-      final result4 =
-          dartProfanityEn.containsProfanity('YoU aRe aN aSShole & FuCKer.');
-      expect(result4, isTrue);
     });
 
-    test('Censor profanity in word with random characters', () {
-      final result1 = dartProfanityEn.censor(
-        'Asshole',
-        bleepType: CensorBleepType.random,
-      );
-      expect(result1, isNot('*********'));
-
-      final result2 = dartProfanityEn.censor(
-        'FuckYou fuckerAsshole and pUSSy!',
+    test('Censor profanity with asterix', () {
+      final result2 = dartProfanityTr.censor(
+        'göt amına tantuni sokuyum',
         bleepType: CensorBleepType.asterisk,
       );
-      expect(result2, '****You ************* and *****!');
+      expect(result2, '*** ***** tantuni sokuyum');
     });
 
-    test('Censor profanity in long texts.', () {
-      final text = '''Hello there, how are YOUfucker?'''
-          '''Lorem Ipsum assHOLEdude.''';
-      /*'''!!! Click this NOW!!! -> https://porn.to'''
-          '''fuck, you'''
-          '''fUcK uuu'''
-          '''you dirty scum''';*/
-
-      final result = dartProfanityEn.censor(text);
-
-      final expectation = '''Hello there, how are YOU******?'''
-          '''Lorem Ipsum *******dude.''';
-      //'''!!! Click this NOW!!! -> https://****.to'''
-      //'''****, you'''
-      //'''**** uuu'''
-      //'''you dirty s***''';
-
-      expect(result, expectation);
+    test('Censor profanity with asterix', () {
+      final result2 = dartProfanityTr.censor(
+        'kırk orospu bir araya gelse senin gibi bir piç doğuramaz.',
+        bleepType: CensorBleepType.asterisk,
+        censorType: CensorType.firstLetter,
+      );
+      expect(result2, 'kırk orospu bir araya gelse senin gibi bir p** doğuramaz.');
     });
   });
 }
