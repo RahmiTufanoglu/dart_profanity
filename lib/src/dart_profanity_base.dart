@@ -55,7 +55,7 @@ class Profanity {
         .asMap()
         .entries
         .map((e) {
-          var word = e.value;
+          final word = e.value;
 
           final lowerCaseWord = word.toLowerCase().normalize;
 
@@ -79,14 +79,14 @@ class Profanity {
 
           final upperCaseIndexes = <int>[];
           final splittedWord = word.split('');
-          for (var i = 0; i < splittedWord.length; i++) {
+          for (int i = 0; i < splittedWord.length; i++) {
             if (splittedWord[i].toUpperCase() == splittedWord[i]) {
               upperCaseIndexes.add(i);
             }
           }
 
           final splittedCensoredWord = censoredWord!.split('');
-          for (var i = 0; i < splittedCensoredWord.length; i++) {
+          for (int i = 0; i < splittedCensoredWord.length; i++) {
             if (upperCaseIndexes.contains(i)) {
               splittedCensoredWord[i] = splittedCensoredWord[i].toUpperCase();
             }
