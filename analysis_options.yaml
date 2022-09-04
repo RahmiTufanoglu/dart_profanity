@@ -28,7 +28,7 @@ linter:
     - list_remove_unrelated_type
     - unrelated_type_equality_checks
     - valid_regexps
-    - omit_local_variable_types
+    #- omit_local_variable_types
     - type_annotate_public_apis
     - prefer_typing_uninitialized_variables
     - avoid_types_on_closure_parameters
