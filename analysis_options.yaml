@@ -33,6 +33,53 @@ linter:
     - prefer_typing_uninitialized_variables
     - avoid_types_on_closure_parameters
     #- always_specify_types
+    - # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    - avoid_type_to_string
+    - close_sinks
+    - empty_statements
+    - no_adjacent_strings_in_list
+    - no_duplicate_case_values
+    - throw_in_finally
+    - annotate_overrides
+    - avoid_annotating_with_dynamic
+    - avoid_classes_with_only_static_members
+    - avoid_final_parameters
+    - avoid_setters_without_getters
+    - avoid_renaming_method_parameters
+    - avoid_unnecessary_containers
+    - avoid_void_async
+    - await_only_futures
+    - camel_case_extensions
+    - empty_catches
+    - file_names
+    - lines_longer_than_80_chars
+    - prefer_asserts_in_initializer_lists
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_equal_for_default_values
+    - prefer_final_locals
+    - prefer_if_null_operators
+    - prefer_initializing_formals
+    - prefer_inlined_adds
+    - unnecessary_await_in_return
+    - sort_unnamed_constructors_first
+    - unnecessary_parenthesis
+    - unnecessary_raw_strings
+    - unnecessary_this
+    - unnecessary_string_interpolations
+    - unnecessary_string_escapes
+    - use_colored_box
+    - use_decorated_box
+    - secure_pubspec_urls
+    - sort_pub_dependencies
+    - use_to_and_as_if_applicable
+    - use_setters_to_change_properties
+    - use_named_constants
+    - use_rethrow_when_possible
+    - unnecessary_late
+    - unnecessary_lambdas
 
 # For more information about the core and recommended set of lints, see
 # https://dart.dev/go/core-lints
